@@ -1,60 +1,50 @@
-# Python CRUD Application for [Business Domain]
+# Warehouse Stock Management System (Sembako)
 
-A comprehensive Python application for managing [Data Entity] data with Create, Read, Update, and Delete (CRUD) operations.
+A comprehensive Python console application for managing warehouse stock and inventory data using Python dictionaries, featuring complete Create, Read, Update, and Delete (CRUD) operations along with transaction tracking.
 
 ## Business Understanding
 
-This project caters to the [Industry/Business Domain] industry, specifically addressing the need to manage [Data Entity] data efficiently. [Data Entity] plays a crucial role in [Explain the importance of data entity in business processes].
+This project caters to the **Retail and Wholesale Sembako (Groceries)** industry, specifically addressing the need to manage daily inventory stock, pricing, expiration tracking, and incoming/outgoing goods efficiently. Effective inventory tracking plays a crucial role in preventing stockouts and minimizing expired goods.
 
 **Benefits:**
-
-* Improved data accuracy and consistency
-* Streamlined data management processes
-* Enhanced decision-making through readily available data
-* ... (List additional benefits relevant to the business)
+* Improved stock accuracy and real-time inventory visibility
+* Streamlined tracking of product expiration and incoming shipments
+* Enhanced decision-making through readily available inventory reports and transaction history
+* Minimized stock discrepancies and optimized warehouse organization
 
 **Target Users:**
-
-This application is designed for [Target Users] (e.g., sales representatives, inventory managers, customer support agents) within the organization to facilitate their [Tasks/Activities] related to [Data Entity].
+This application is designed for **Warehouse Managers, Inventory Clerks, and Store Staff** to facilitate daily stock auditing, product searches, and transaction recording.
 
 ## Features
 
 * **Create:**
-    * Add new [Data Entity] entries with essential details like [List relevant fields].
-    * Implement validation rules to ensure data integrity (if applicable, e.g., unique identifiers, data type checks).
+    * Add new sembako items with essential details like unique code (SKU), name, category, quantity, price, entry date, and expiration duration.
+    * Implement validation rules ensuring unique codes and non-negative values for stock and price.
 * **Read:**
-    * Search and retrieve specific [Data Entity] records by applying filters based on [Searchable fields].
-    * Display comprehensive information for each [Data Entity] in a user-friendly format.
-    * Integrate pagination and sorting capabilities for large datasets (if applicable).
+    * Display all stock items in a clean, dynamically formatted table view with currency formatting (`Rp`).
+    * Flexible search capability to find specific products by code, name, or category.
 * **Update:**
-    * Modify existing [Data Entity] data to reflect changes in [Attributes/Properties].
-    * Provide clear confirmation or error messages based on update success or failure.
+    * Modify existing product attributes (name, category, stock, price, entry date, or expiration) while keeping the unique code fixed.
+    * Provide instant preview of updated details.
 * **Delete:**
-    * Allow for the removal of unwanted [Data Entity] records with appropriate authorization checks (if applicable).
-    * Implement soft delete functionality to prevent permanent data loss (optional, depending on business needs).
-    * Consider offering data archiving capabilities (optional).
-* **Security:**
-    * Implement user authentication and authorization mechanisms (if sensitive data is involved) to control access to different CRUD operations.
-    * ... (Specify additional security features as needed)
-* **Reporting:**
-    * Generate reports or summaries based on [Data Entity] data to support [Business Functions] (optional).
-    * Export data in various formats (e.g., CSV, Excel) for further analysis (optional).
+    * Safely remove discontinued item records from the active database with confirmation steps.
+* **Transaction Management:**
+    * Record incoming stock (Barang Masuk) and outgoing stock/sales (Barang Keluar) with automatic stock updates.
+    * Track and view a complete history of all warehouse transactions.
+* **Security & Validation:**
+    * Robust input handling using `try-except` blocks to catch incorrect data types and negative integers.
+    * Date validation ensuring incoming entry dates do not exceed the current system date.
 
 ## Installation
 
 1. **Prerequisites:**
-    * Python version (specify the required version)
-    * Additional dependencies (list any required packages)
+    * Python 3.8 or higher installed on your system.
 
-2. **Installation:**
+2. **Installation & Setup:**
     ```bash
-    git clone https://github.com/<your-username>/<your-repo-name>.git
-    cd <your-repo-name>
-    pip install -r requirements.txt  # If using a requirements.txt file
+    git clone [https://github.com/emilyvitasya/python_crud_warehouse_management_system.git](https://github.com/emilyvitasya/python_crud_warehouse_management_system.git)
+    cd python_crud_warehouse_management_system
     ```
-
-3. **Database Setup (if applicable):**
-    Follow specific instructions for configuring your database connection, aligning with the business's chosen database management system.
 
 ## Usage
 
@@ -63,18 +53,23 @@ This application is designed for [Target Users] (e.g., sales representatives, in
     python main.py
     ```
 
-2. **CRUD Operations:**
-    * **Create:** Add a new [Data Entity] record, for example, a new customer in a customer management system, providing details like name, contact information, and preferences.
-    * **Read:** Search and retrieve customer information by name, ID, or other relevant criteria.
-    * **Update:** Modify customer details, such as updating their address or contact details.
-    * **Delete:** Remove a customer record from the system (with appropriate authorization, if applicable).
+2. **Menu Navigation:**
+    * **1. Report & Pencarian Stok Sembako:** View the full inventory table or search items flexibly.
+    * **2. Menambahkan Data Stok Sembako Baru:** Input new product details with automated checks.
+    * **3. Mengupdate Data Stok Sembako:** Edit specific attributes of existing items.
+    * **4. Menghapus Data Sembako:** Remove items from the database.
+    * **5. Manajemen Barang Masuk & Keluar (Transaksi):** Process stock flow and review transaction logs.
+    * **6. Exit:** Close the application.
 
 ## Data Model
-This project utilizes a [Data Structure] (e.g., relational database, JSON documents) to represent [Data Entity] data. The following fields are typically stored:
-   * [Field 1]: (Data type) - Description of the field's purpose in the business context.
-   * [Field 2]: (Data type) - Description of the field's purpose in the business context.
-   * ... (List all relevant fields)
+This project utilizes an in-memory **List of Dictionaries** structure to represent the inventory database. Each record contains the following keys:
+* `kode`: (String) - Unique stock code identifier (e.g., `'S101'`).
+* `nama`: (String) - Product name.
+* `jenis`: (String) - Product category/type (e.g., `'Beras'`, `'Minyak'`).
+* `stok`: (Integer) - Current available quantity.
+* `harga`: (Integer) - Price per unit in IDR.
+* `tanggal_masuk`: (Date) - Date when the item entered the warehouse.
+* `kadaluarsa`: (String) - Expiration duration estimate (e.g., `'6 Bulan'`, `'1 Tahun'`).
 
 ## Contributing
-We welcome contributions to this project! Please feel free to open a pull request, sent to [your_email] or submit an issue if you encounter any problems or have suggestions for improvements.
-
+We welcome contributions to this project! Please feel free to open a pull request or submit an issue if you encounter any problems or have suggestions for improvements.
