@@ -18,16 +18,11 @@ class Sembako:
 
 # Database sementara
 datasembako = [
-Sembako('S101', 'Beras Premium 5kg', 'Beras', 25, 65000, date(2025, 11, 1), '6 Bulan'),
-    Sembako('S102', 'Minyak Goreng Bimoli 2L', 'Minyak', 40, 38000, date(2025, 11, 11), '1 Tahun'),
-    Sembako('S103', 'Gula Pasir Gulaku 1kg', 'Gula', 50, 16000, date(2026, 7, 1), '1 Tahun'),
-    Sembako('S104', 'Tepung Terigu Segitiga Biru', 'Tepung', 30, 14500, date(2026, 9, 1), '8 Bulan'),
-    Sembako('S105', 'Telur Ayam Ras 1kg', 'Telur', 20, 28000, date(2025, 11, 19), '2 Minggu'),
-    Sembako('S106', 'Kecap Manis Bango 550ml', 'Bumbu', 35, 27500, date(2026, 2, 2), '1 Tahun'),
-    Sembako('S107', 'Saus Tomat ABC 275ml', 'Bumbu', 25, 12000, date(2026, 3, 2), '9 Bulan'),
-    Sembako('S108', 'Mie Instan Indomie Goreng', 'Mie', 120, 3100, date(2025, 11, 30), '6 Bulan'),
-    Sembako('S109', 'Susu Kental Manis Indomilk', 'Susu', 45, 13500, date(2026, 4, 3), '1 Tahun'),
-    Sembako('S110', 'Teh Celup Sosro Box', 'Minuman', 60, 9000, date(2026, 5, 23), '2 Tahun')
+    Sembako('S101', 'Beras Premium 5kg', 'Beras', 25, 65000, date(2026, 11, 1), '6 Bulan'),
+    Sembako('S102', 'Minyak Goreng Bimoli 2L', 'Minyak', 40, 38000, date(2026, 11, 1), '1 Tahun'),
+    Sembako('S103', 'Gula Pasir Gulaku 1kg', 'Gula', 50, 16000, date(2026, 11, 1), '1 Tahun'),
+    Sembako('S104', 'Tepung Terigu Segitiga Biru', 'Tepung', 30, 14500, date(2026, 11, 1), '8 Bulan'),
+    Sembako('S105', 'Telur Ayam Ras 1kg', 'Telur', 20, 28000, date(2026, 11, 1), '2 Minggu')
 ]
 
 # Riwayat Transaksi Barang Masuk/Keluar
