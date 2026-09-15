@@ -1,59 +1,46 @@
-## Python CRUD Application for Inventory Management
+# Warehouse Stock Management System (Sembako)
 
-A comprehensive Python application for managing inventory data with Create, Read, Update, and Delete (CRUD) operations.
+A comprehensive Python console application for managing warehouse stock and inventory data using Python dictionaries, featuring complete Create, Read, Update, and Delete (CRUD) operations along with transaction tracking.
 
 ## Business Understanding
 
-This project caters to businesses in various sectors (e.g., retail, manufacturing) by providing a streamlined solution for managing product inventory. Efficient inventory management ensures product availability, minimizes stockouts and overstocking, and optimizes ordering processes.
+This project caters to the **Retail and Wholesale Sembako (Groceries)** industry, specifically addressing the need to manage daily inventory stock, pricing, expiration tracking, and incoming/outgoing goods efficiently. Effective inventory tracking plays a crucial role in preventing stockouts and minimizing expired goods.
 
 **Benefits:**
-
-* Improved stock accuracy: Real-time inventory data reduces discrepancies and ensures informed decision-making.
-* Enhanced order fulfillment: Accurate stock levels enable efficient order fulfillment and customer satisfaction.
-* Reduced carrying costs: Optimized inventory management minimizes storage costs and prevents overstocking.
-* Improved demand forecasting: Data-driven insights support better forecasting of future demand.
+* **Improved stock accuracy:** Real-time inventory data reduces discrepancies and ensures informed decision-making.
+* **Streamlined tracking:** Easy monitoring of product expiration dates and incoming/outgoing shipments.
+* **Enhanced operational efficiency:** Quick product lookup and transaction history logging for daily store operations.
 
 **Target Users:**
-
-This application is designed for inventory managers, warehouse staff, and sales representatives within a business to manage product stock levels, track sales, and maintain accurate inventory data.
+This application is designed for **Warehouse Managers, Inventory Clerks, and Store Staff** to facilitate daily stock auditing, product searches, and transaction recording.
 
 ## Features
 
 * **Create:**
-    * Add new product entries to the inventory system, specifying details like product name, description, SKU (Stock Keeping Unit), quantity on hand, reorder point, and category.
-    * Implement validation rules to ensure data accuracy (e.g., unique SKU, positive quantity).
+    * Add new sembako items with essential details like unique code (SKU), name, category, quantity, price, entry date, and expiration duration.
+    * Robust validation rules ensuring unique codes and non-negative values for stock and price.
 * **Read:**
-    * Search and retrieve specific product information by name, SKU, or category.
-    * Display comprehensive product details in a user-friendly format, including stock availability, product image (optional), and reorder point.
-    * Integrate pagination for large product lists.
+    * Display all stock items in a clean, dynamically formatted table view with currency formatting (`Rp`).
+    * Flexible search capability to find specific products by code, name, or category.
 * **Update:**
-    * Modify existing product information to reflect changes in stock levels, pricing, or product details.
-    * Provide clear confirmation or error messages for update success or failure.
+    * Modify existing product attributes (name, category, stock, price, entry date, or expiration duration) while keeping the unique code fixed.
+    * Instant preview of updated product details.
 * **Delete:**
-    * Allow for the removal of discontinued or obsolete products with appropriate authorization checks.
-    * Consider offering a soft delete functionality to prevent permanent data loss (optional).
-* **Reporting:**
-    * Generate reports on inventory levels, low-stock items, and sales trends to support informed inventory management and purchasing decisions.
-    * Export reports in various formats (e.g., CSV, Excel) for further analysis.
+    * Safely remove discontinued item records from the active database with confirmation steps.
+* **Transaction Management:**
+    * Record incoming stock (Barang Masuk) and outgoing stock/sales (Barang Keluar) with automatic stock updates.
+    * Track and view a complete history of all warehouse transactions.
 
 ## Installation
 
 1. **Prerequisites:**
-    * Python version 3.7 or later
-    * Additional dependencies:
-        * `pip install flask`
-        * `pip install sqlalchemy`
-        * `pip install psycopg2`  # For connecting to a PostgreSQL database
+    * Python version 3.8 or later installed on your system.
 
-2. **Installation:**
+2. **Installation & Setup:**
     ```bash
-    git clone [https://github.com/](https://github.com/)<your-username>/python-inventory-crud.git
-    cd python-inventory-crud
-    pip install -r requirements.txt
+    git clone [https://github.com/emilyvitasya/python_crud_warehouse_management_system.git](https://github.com/emilyvitasya/python_crud_warehouse_management_system.git)
+    cd python_crud_warehouse_management_system
     ```
-
-3. **Database Setup:**
-    * Create a PostgreSQL database and configure the connection details in `config.py`.
 
 ## Usage
 
@@ -62,23 +49,21 @@ This application is designed for inventory managers, warehouse staff, and sales 
     python main.py
     ```
 
-2. **CRUD Operations:**
-    * **Create:** Add a new product to the inventory, providing necessary details like name, SKU, and quantity.
-    * **Read:** Search for a specific product by name or SKU to view its details and stock level.
-    * **Update:** Modify the quantity of a product or update other product details.
-    * **Delete:** Remove a discontinued product from the inventory (with authorization).
-    * **Reports:** Generate reports on low-stock items or overall inventory levels for analysis.
+2. **Menu Navigation:**
+    * **1. Report & Pencarian Stok Sembako:** View the full inventory table or search items flexibly.
+    * **2. Menambahkan Data Stok Sembako Baru:** Input new product details with automated checks.
+    * **3. Mengupdate Data Stok Sembako:** Edit specific attributes of existing items.
+    * **4. Menghapus Data Sembako:** Remove items from the database.
+    * **5. Manajemen Barang Masuk & Keluar (Transaksi):** Process stock flow and review transaction logs.
+    * **6. Exit:** Close the application.
 
 ## Data Model
 
-This project utilizes a relational database (PostgreSQL) to store product information. The following tables are used:
-
-* **Products:**
-    * `id` (Integer, Primary Key): Unique identifier for each product.
-    * `name` (String): Name of the product.
-    * `description` (Text): Detailed product description (optional).
-    * `sku` (String, Unique): Stock Keeping Unit for the product.
-    * `quantity` (Integer): Current stock level of the product.
-    * `reorder_point` (Integer): Minimum stock level before reordering.
-    * `category` (String): Category of the product (e.g., electronics, clothing).
-    * `image_url` (String, optional): URL for the product image.
+This project utilizes an in-memory **List of Dictionaries** structure to manage inventory data efficiently without requiring external database setups. Each record contains the following keys:
+* `kode`: (String) - Unique stock code identifier (e.g., `'S101'`).
+* `nama`: (String) - Product name.
+* `jenis`: (String) - Product category/type (e.g., `'Beras'`, `'Minyak'`).
+* `stok`: (Integer) - Current available quantity.
+* `harga`: (Integer) - Price per unit in IDR.
+* `tanggal_masuk`: (Date) - Date when the item entered the warehouse.
+* `kadaluarsa`: (String) - Expiration duration estimate (e.g., `'6 Bulan'`, `'1 Tahun'`).
