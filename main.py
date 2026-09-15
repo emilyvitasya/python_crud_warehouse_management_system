@@ -1,5 +1,5 @@
 # ===================================
-# Warehouse Stock Management System (Sembako) - Versi Dictionary
+# Warehouse Stock Management System (Sembako)
 # ===================================
 # Developed by. EMILY
 
